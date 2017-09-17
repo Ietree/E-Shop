@@ -22,8 +22,12 @@
 	<!-- 1、名称 计算机名 唯一 区别 -->
 	<dubbo:application name="eshop-console" />
 	<!-- 2、设置注册中心 zookeeper地址 -->
-	<dubbo:registry address="192.168.1.121:2181" protocol="zookeeper" />
-	<!-- 3、调用此接口对应的实现类 -->
-	<dubbo:reference interface="com.ietree.eshop.core.service.TestTbService" id="testTbService" />
+	<!-- <dubbo:registry address="192.168.1.121:2181" protocol="zookeeper" /> -->
+	<dubbo:registry address="N/A" check="false" />
+	<!-- 3、全局设置超时时间 -->
+	<dubbo:consumer timeout="600000" check="false" />
+	<!-- 4、调用此接口对应的实现类 timeout：默认是1000毫秒 -->
+	<!-- <dubbo:reference interface="com.ietree.eshop.core.service.TestTbService" id="testTbService" /> -->
+	<dubbo:reference interface="com.ietree.eshop.core.service.TestTbService" id="testTbService" url="dubbo://127.0.0.1:20880" />
 
 </beans>
